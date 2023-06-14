@@ -35,5 +35,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/pharmacie/{id}',[PharmacieController::class,'show'])->name('pharmacie.show');
 Route::get('/pharmacie',[PharmacieController::class,'index'])->name('pharmacie.index');
 Route::get('/pharmacie/details/{id}',[PharmacieController::class,'details'])->name('pharmacie.details');
+Route::get('/contact',[PharmacieController::class,'contact'])->name('layouts.contact');
+Route::get('/apropos',[PharmacieController::class,'apropos'])->name('layouts.apropos');
+Route::get('/acceuil',[PharmacieController::class,'acceuil'])->name('welcome');
 
 require __DIR__.'/auth.php';
