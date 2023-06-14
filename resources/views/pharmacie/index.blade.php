@@ -71,7 +71,7 @@
         
                       </td>
                       <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
-                        <form action="{{route("pharmacie.destroy",$pharmacie->id)}}" method="post" class="d-inline delete">
+                        <form action="{{route("pharmacie.destroy",$pharmacie->id)}}" method="post" class="d-inline delete" >
                             @csrf
                             @method("DELETE")
                             <input name="_method" type="hidden" value="DELETE">
@@ -86,7 +86,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="text-center">لا يوجد اي منخرط</td>
+                        <td colspan="5" class="text-center">vide....!</td>
                     </tr>
                     @endforelse
                   </tbody>
@@ -95,4 +95,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+      const btnsSupp = document.querySelectorAll('.delete');
+      btnsSupp.forEach(btn => {
+        btn.addEventListener('submit', (e) => {
+          if (!confirm('Etes-vous sûr vouloir supprimer ce enregisterment !')) {
+            e.preventDefault();
+          }
+        });
+      })
+    </script>
 </x-app-layout>

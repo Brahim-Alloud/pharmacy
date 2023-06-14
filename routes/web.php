@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PharmacieController::class, 'home'])->name('pharmacie.home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('pharmacie.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

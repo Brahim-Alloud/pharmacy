@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pharmacie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PharmacieController extends Controller
 {
@@ -86,7 +87,7 @@ class PharmacieController extends Controller
     public function update(Request $request,$id)
     {
         // dd($request);
-        $request->validate([
+        $requestData = $request->validate([
             'nom'=>'required',
             'adresse'=>'required',
             'email'=>'required',
@@ -106,7 +107,18 @@ class PharmacieController extends Controller
 
         ]);
         $pharmacie=Pharmacie::findorfail($id);
-        $pharmacie->update($request->all());
+
+        if ($request->hasFile('photo_chemain')) {
+            $file = $request->file('photo_chemain');
+            $filename = $file->getClientOriginalName();
+            $fileName = date('His') . $filename;
+            Storage::disk('public')->delete('images/pharmacies/' . $pharmacie->photo_chemain);
+            $request->file('photo_chemain')->storeAs('images/pharmacies/', $fileName, 'public');
+
+            $requestData['photo_chemain'] = $fileName;
+        }
+
+        $pharmacie->update($requestData);
         return redirect()->route('pharmacie.index');
     }
 
