@@ -85,25 +85,27 @@ class PharmacieController extends Controller
      */
     public function update(Request $request,$id)
     {
+        // dd($request);
         $request->validate([
             'nom'=>'required',
             'adresse'=>'required',
             'email'=>'required',
             'ville'=>'required',
-            'heure_matin_ts_debut'=>'required',
-            'heure_matin_ts_fin'=>'required',
-            'heure_nuit_ts_debut'=>'required',
-            'heure_nuit_ts_fin'=>'required',
-            'heure_matin_fs_debut'=>'required',
-            'heure_matin_fs_fin'=>'required',
-            'heure_nuit_fs_debut'=>'required',
-            'heure_nuit_fs_fin'=>'required',
-            'semaine_travail_fs'=>'required',
+            'file-upload'=>'nullable',
+            'heure_matin_ts_debut'=>'nullable',
+            'heure_matin_ts_fin'=>'nullable',
+            'heure_nuit_ts_debut'=>'nullable',
+            'heure_nuit_ts_fin'=>'nullable',
+            'heure_matin_fs_debut'=>'nullable',
+            'heure_matin_fs_fin'=>'nullable',
+            'heure_nuit_fs_debut'=>'nullable',
+            'heure_nuit_fs_fin'=>'nullable',
+            'semaine_travail_fs'=>'nullable',
             'geo_lat'=>'nullable',
             'geo_long'=>'nullable',
 
         ]);
-        $pharmacie=Pharmacie::findorfail('$id');
+        $pharmacie=Pharmacie::findorfail($id);
         $pharmacie->update($request->all());
         return redirect()->route('pharmacie.index');
     }
