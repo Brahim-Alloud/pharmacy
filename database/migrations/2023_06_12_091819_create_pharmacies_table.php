@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('heure_soir_fs_debut');
             $table->string('heure_soir_fs_fin');
             $table->string('semaine_travail_fs');
-            $table->decimal('geo_lat')->nullable();
-            $table->decimal('geo_long')->nullable();
+            $table->decimal('geo_lat',8,6)->nullable();
+            $table->decimal('geo_long',8,6)->nullable();
             $table->timestamps();
         });
     }

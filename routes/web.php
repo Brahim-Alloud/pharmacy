@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PharmacieController::class, 'home'])->name('pharmacie.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,5 +34,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/pharmacie/{id}',[PharmacieController::class,'show'])->name('pharmacie.show');
 Route::get('/pharmacie',[PharmacieController::class,'index'])->name('pharmacie.index');
+Route::get('/pharmacie/details/{id}',[PharmacieController::class,'details'])->name('pharmacie.details');
 
 require __DIR__.'/auth.php';

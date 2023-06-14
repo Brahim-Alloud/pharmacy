@@ -117,4 +117,32 @@ class PharmacieController extends Controller
         $pharmacie->delete();
         return redirect()->route('pharmacie.index');
     }
+
+
+    public function home()
+    {
+        $request = request();
+        $query = Pharmacie::query();
+
+        if ($ville = $request->query('ville')) {
+            $query->where('ville','LIKE', "%{$ville}%");
+        }
+
+        if ($semaine = $request->query('semaine')) {
+            $query->where('semaine_travail_fs', 'LIKE', "%{$semaine}");
+        }
+
+        // dd($query->get());
+        return view('welcome', [
+            'pharmacies' => $query->get(),
+        ]);
+    }
+
+    public function details($id) {
+        $pharmacie = Pharmacie::findOrFail($id);
+
+        return view('details', [
+            'pharmacie' => $pharmacie,
+        ]);
+    }
 }
