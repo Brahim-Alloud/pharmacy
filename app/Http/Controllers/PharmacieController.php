@@ -23,6 +23,10 @@ class PharmacieController extends Controller
     {
         return view('pharmacie.create');
     }
+    public function acceuil()
+    {
+        return view('welcome');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -118,5 +122,13 @@ class PharmacieController extends Controller
         $pharmacie=Pharmacie::findorfail($id);
         $pharmacie->delete();
         return redirect()->route('pharmacie.index');
+    }
+    public function apropos()
+    {
+        return view('layouts.apropos');
+    }
+    public function contact()
+    {
+        return view('layouts.contact');
     }
 }

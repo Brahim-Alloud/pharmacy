@@ -32,9 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/pharmacie/{id}/edit',[PharmacieController::class,'edit'])->name('pharmacie.edit');
     Route::delete('/pharmacie/{id}',[PharmacieController::class,'destroy'])->name('pharmacie.destroy');
     Route::put('/pharmacie/{id}',[PharmacieController::class,'update'])->name('pharmacie.update');
+    Route::get('/pharmacie',[PharmacieController::class,'index'])->name('pharmacie.index');
 
 });
 Route::get('/pharmacie/{id}',[PharmacieController::class,'show'])->name('pharmacie.show');
-Route::get('/pharmacie',[PharmacieController::class,'index'])->name('pharmacie.index');
+Route::get('/contact',[PharmacieController::class,'contact'])->name('layouts.contact');
+Route::get('/apropos',[PharmacieController::class,'apropos'])->name('layouts.apropos');
+Route::get('/acceuil',[PharmacieController::class,'acceuil'])->name('welcome');
 
 require __DIR__.'/auth.php';

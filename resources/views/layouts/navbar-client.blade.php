@@ -7,14 +7,14 @@
             <span class="sr-only">Open main menu</span>
             <!--
               Icon when menu is closed.
-  
+
               Menu open: "hidden", Menu closed: "block"
             -->
             <img class="block h-6 w-6" src={{asset('img/logophar.jpg')}} fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"/>
 
             <!--
               Icon when menu is open.
-  
+
               Menu open: "block", Menu closed: "hidden"
             -->
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -30,15 +30,15 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Acceuil</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">A propos</a>
+              <a href="{{route('welcome')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Acceuil</a>
+              <a href="{{route('layouts.contact')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+              {{-- <a href="{{route('layouts.apropos')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">A propos</a> --}}
             </div>
           </div>
         </div>
       </div>
     </div>
-  
+
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
@@ -50,4 +50,3 @@
       </div>
     </div>
   </nav>
-  
